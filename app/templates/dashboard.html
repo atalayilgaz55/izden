@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        İZDEN — Yönetim Paneli
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <div class="logo">
+            İZDEN
+        </div>
+
+        <div class="header-info">
+            Yönetim Paneli
+        </div>
+
+    </header>
+
+
+    <section class="page-title">
+
+        <h1>
+            Katılımcılar
+        </h1>
+
+        <p>
+            İZDEN'e bırakılan iletişim kayıtları.
+        </p>
+
+    </section>
+
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-title">
+                Toplam kayıt
+            </div>
+
+            <div
+                class="stat-number"
+                id="toplam-kayit"
+            >
+                0
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="records">
+
+        <div class="table-header">
+
+            <div>
+                Ad
+            </div>
+
+            <div>
+                Telefon
+            </div>
+
+            <div>
+                Mesaj / İlgi Alanı
+            </div>
+
+            <div>
+                Kayıt Tarihi
+            </div>
+
+        </div>
+
+
+        <div id="leadler">
+
+            <div class="message">
+                Kayıtlar yükleniyor...
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='js/dashboard.js') }}"
+></script>
+
+</body>
+
+</html>

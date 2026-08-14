@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f1eb;
+    color: #252525;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 40px 24px 70px;
+}
+
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid #d8d5cf;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+.header-info {
+    color: #6c6c6c;
+    font-size: 14px;
+}
+
+
+/* Başlık */
+
+.page-title {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.page-title h1 {
+    margin: 0 0 8px;
+
+    font-size: 38px;
+}
+
+.page-title p {
+    margin: 0;
+
+    color: #707070;
+}
+
+
+/* İstatistik */
+
+.stats {
+    display: flex;
+
+    gap: 16px;
+
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    min-width: 180px;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid #dedbd5;
+}
+
+.stat-title {
+    color: #777;
+
+    font-size: 14px;
+}
+
+.stat-number {
+    margin-top: 8px;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    color: #4d9293;
+}
+
+
+/* Kayıt alanı */
+
+.records {
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid #dedbd5;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+/* Tablo başlığı */
+
+.table-header {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1.2fr
+        2.5fr
+        1.2fr;
+
+    padding: 18px 22px;
+
+    background: #ebe8e2;
+
+    color: #5d5d5d;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Kayıt */
+
+.record {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1.2fr
+        2.5fr
+        1.2fr;
+
+    padding: 20px 22px;
+
+    border-top: 1px solid #e4e1db;
+
+    align-items: start;
+}
+
+.record:hover {
+    background: rgba(100, 170, 170, 0.05);
+}
+
+.record-name {
+    font-weight: 600;
+}
+
+.record-phone {
+    color: #555;
+}
+
+.record-message {
+    color: #666;
+
+    line-height: 1.5;
+}
+
+.record-date {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* Durum mesajı */
+
+.message {
+    padding: 30px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+/* Mobil */
+
+@media (max-width: 800px) {
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .record {
+        display: block;
+
+        padding: 20px;
+    }
+
+    .record > div {
+        margin-bottom: 10px;
+    }
+
+    .record > div::before {
+        display: block;
+
+        margin-bottom: 3px;
+
+        font-size: 12px;
+
+        color: #888;
+    }
+
+    .record > div:nth-child(1)::before {
+        content: "Ad";
+    }
+
+    .record > div:nth-child(2)::before {
+        content: "Telefon";
+    }
+
+    .record > div:nth-child(3)::before {
+        content: "Mesaj / İlgi";
+    }
+
+    .record > div:nth-child(4)::before {
+        content: "Kayıt tarihi";
+    }
+}
