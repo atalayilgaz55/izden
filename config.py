@@ -8,11 +8,6 @@ load_dotenv()
 
 
 class Config:
-    """
-    Projenin ortak ayarlarını tutar.
-
-    Diğer dosyalar gerekli ayarlara bu sınıf üzerinden ulaşabilir.
-    """
 
     SECRET_KEY = os.environ.get(
         "SECRET_KEY",

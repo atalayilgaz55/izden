@@ -4,28 +4,18 @@ from flask import current_app
 
 
 def get_db():
-    """
-    SQLite veritabanına bağlanır.
 
-    Flask uygulamasının ayarlarından veritabanı dosyasının
-    yolunu alır ve bağlantıyı döndürür.
-    """
     database_url = current_app.config["DATABASE_URL"]
 
     connection = sqlite3.connect(database_url)
 
-    # Sonuçlara sütun isimleriyle erişebilmemizi sağlar.
     connection.row_factory = sqlite3.Row
 
     return connection
 
 
 def init_db():
-    """
-    Veritabanını hazırlar.
 
-    leads tablosu yoksa oluşturur.
-    """
     db = get_db()
 
     db.execute("""
@@ -43,9 +33,7 @@ def init_db():
 
 
 def lead_ekle(isim, telefon, mesaj):
-    """
-    Yeni bir katılımcı kaydı oluşturur.
-    """
+
     db = get_db()
 
     db.execute(
@@ -61,10 +49,7 @@ def lead_ekle(isim, telefon, mesaj):
 
 
 def tum_leadler():
-    """
-    Veritabanındaki tüm katılımcıları
-    en yeniden en eskiye doğru getirir.
-    """
+
     db = get_db()
 
     leads = db.execute(

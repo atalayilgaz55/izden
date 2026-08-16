@@ -4,39 +4,27 @@ from app.database import lead_ekle, tum_leadler
 from app.services.ai_service import AIServiceError, ai_service
 
 
-# Sayfalar için blueprint.
 pages = Blueprint("pages", __name__)
 
 
-# API için blueprint.
 api = Blueprint("api", __name__)
 
 
 @pages.route("/")
 def index():
-    """
-    İZDEN'in ana sayfasını gösterir.
-    """
     return render_template("index.html")
 
 
 @pages.route("/dashboard")
 def dashboard():
-    """
-    Yönetim panelini gösterir.
-    """
     return render_template("dashboard.html")
 
 
 @api.route("/sohbet", methods=["POST"])
 def sohbet():
-    """
-    Kullanıcının mesajını AI servisine gönderir.
-    """
 
     data = request.get_json()
 
-    # İstek içerisinde JSON yoksa hata döndür.
     if not data:
         return jsonify({
             "basari": False,
@@ -46,7 +34,6 @@ def sohbet():
     mesaj = data.get("mesaj")
     gecmis = data.get("gecmis", [])
 
-    # Mesaj gönderilmemişse hata döndür.
     if not mesaj:
         return jsonify({
             "basari": False,
@@ -73,9 +60,7 @@ def sohbet():
 
 @api.route("/leads", methods=["POST"])
 def lead_olustur():
-    """
-    Yeni bir katılımcı kaydı oluşturur.
-    """
+
 
     data = request.get_json()
 
@@ -89,7 +74,6 @@ def lead_olustur():
     telefon = data.get("telefon")
     mesaj = data.get("mesaj", "")
 
-    # İsim ve telefon zorunlu.
     if not isim or not telefon:
         return jsonify({
             "basari": False,
@@ -117,9 +101,6 @@ def lead_olustur():
 
 @api.route("/leads", methods=["GET"])
 def leadleri_getir():
-    """
-    Veritabanındaki tüm katılımcıları getirir.
-    """
 
     try:
         leads = tum_leadler()

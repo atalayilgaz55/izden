@@ -4,16 +4,11 @@ from config import Config
 
 
 class AIServiceError(Exception):
-    """
-    AI servisiyle ilgili bir hata oluştuğunda kullanılır.
-    """
+
     pass
 
 
 class AIService:
-    """
-    İZDEN için yapay zekâ servisini yönetir.
-    """
 
     def __init__(self):
         self.api_key = Config.GROQ_API_KEY
@@ -23,18 +18,10 @@ class AIService:
         self.api_url = "https://api.groq.com/openai/v1/chat/completions"
 
     def _system_message(self):
-        """
-        AI'a İZDEN hakkında temel bilgileri verir.
-        """
+
         return Config.BUSINESS_CONTEXT
 
     def yanit_uret(self, mesaj, gecmis=None):
-        """
-        Kullanıcının mesajına AI tarafından cevap üretir.
-
-        gecmis:
-        Daha önce yapılan konuşmaların listesidir.
-        """
 
         if not self.api_key:
             return (
@@ -54,10 +41,10 @@ class AIService:
             }
         ]
 
-        # Önceki konuşmaları ekle.
+
         messages.extend(gecmis)
 
-        # Son olarak yeni kullanıcı mesajını ekle.
+
         messages.append(
             {
                 "role": "user",
@@ -101,5 +88,5 @@ class AIService:
             )
 
 
-# Uygulamada kullanacağımız tek AIService örneği.
+
 ai_service = AIService()
