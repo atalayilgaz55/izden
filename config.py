@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-# .env dosyasındaki değişkenleri bilgisayara yükler.
+
 load_dotenv()
 
 
@@ -80,22 +80,15 @@ Yanıtlarını gereksiz yere uzun tutma.
 
 
 class DevelopmentConfig(Config):
-    """
-    Geliştirme sırasında kullanılacak ayarlar.
-    """
 
     DEBUG = True
 
 
 class ProductionConfig(Config):
-    """
-    Canlı ortamda kullanılacak ayarlar.
-    """
 
     DEBUG = False
 
 
-# Ortama göre hangi ayar sınıfının kullanılacağını belirler.
 config = {
     "development": DevelopmentConfig,
     "production": ProductionConfig,
