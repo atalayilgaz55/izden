@@ -12,8 +12,6 @@ def create_app():
 
     app = Flask(__name__)
 
-    # Render üzerinde production ayarlarını,
-    # bilgisayarımızda development ayarlarını kullan.
     if os.environ.get("FLASK_ENV") == "production":
         app.config.from_object(ProductionConfig)
     else:
@@ -36,7 +34,7 @@ def create_app():
 
         return {
             "basari": True,
-            "mesaj": "İZDEN API aktif."
+            "mesaj": "IZDEN API aktif."
         }
 
     return app
