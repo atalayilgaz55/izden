@@ -1,10 +1,9 @@
-import requests
+from groq import Groq
 
 from config import Config
 
 
 class AIServiceError(Exception):
-
     pass
 
 
@@ -12,13 +11,14 @@ class AIService:
 
     def __init__(self):
         self.api_key = Config.GROQ_API_KEY
-
         self.model = "openai/gpt-oss-120b"
 
-        self.api_url = "https://api.groq.com/openai/v1"
+        if self.api_key:
+            self.client = Groq(api_key=self.api_key)
+        else:
+            self.client = None
 
     def _system_message(self):
-
         return Config.BUSINESS_CONTEXT
 
     def yanit_uret(self, mesaj, gecmis=None):
@@ -41,9 +41,7 @@ class AIService:
             }
         ]
 
-
         messages.extend(gecmis)
-
 
         messages.append(
             {
@@ -52,41 +50,19 @@ class AIService:
             }
         )
 
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
-
-        data = {
-            "model": self.model,
-            "messages": messages,
-            "temperature": 0.7
-        }
-
         try:
-            response = requests.post(
-                self.api_url,
-                headers=headers,
-                json=data,
-                timeout=30
+            completion = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0.7
             )
 
-            response.raise_for_status()
+            return completion.choices[0].message.content
 
-            result = response.json()
-
-            return result["choices"][0]["message"]["content"]
-
-        except requests.RequestException as error:
+        except Exception as error:
             raise AIServiceError(
                 "Yapay zekâ servisine bağlanırken bir hata oluştu."
             ) from error
-
-        except (KeyError, IndexError, TypeError):
-            raise AIServiceError(
-                "Yapay zekâ servisinden beklenmeyen bir cevap geldi."
-            )
-
 
 
 ai_service = AIService()
