@@ -13,9 +13,9 @@ class AIService:
     def __init__(self):
         self.api_key = Config.GROQ_API_KEY
 
-        self.model = "llama-3.1-8b-instant"
+        self.model = "openai/gpt-oss-120b"
 
-        self.api_url = "https://api.groq.com/openai/v1/chat/completions"
+        self.api_url = "https://api.groq.com/openai/v1"
 
     def _system_message(self):
 
