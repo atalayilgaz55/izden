@@ -54,7 +54,7 @@ class AIService:
             completion = self.client.chat.completions.create(
                 model=self.model,
                 messages=messages,
-                temperature=0.7
+                temperature=0.3
             )
 
             return completion.choices[0].message.content
