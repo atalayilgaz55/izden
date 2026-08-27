@@ -34,7 +34,7 @@ class Config:
         "*"
     )
 
-   BUSINESS_CONTEXT = """
+    BUSINESS_CONTEXT = """
 Sen İZDEN'in yapay zekâ asistanısın.
 
 İZDEN; yarım bırakılmış çizimlerin, hikâyelerin, müziklerin
